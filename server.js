@@ -4,8 +4,8 @@ var http = require('http').createServer(app);
 var cv = require('opencv');
 var process = require('process');
 
-http.listen(3000, function() {
-  console.log('Server is running on port 3000');
+http.listen(3002, function() {
+  console.log('Server is running on port 3002');
 });
 
 app.get('/stream', function(req, res) {
@@ -46,8 +46,10 @@ io.sockets.on('connection',function(socket){
   });
 //*/
   socket.on('disconnect', function(socket) {
-    clientid.splice(clientid.indexOf(socket.id), 1);
+    clientcamera.splice(clientid.indexOf(socket.id), 1);
+    clientc2i.splice(clientid.indexOf(socket.id), 1);
     clientb64.splice(clientid.indexOf(socket.id), 1);
+    clientid.splice(clientid.indexOf(socket.id), 1);
   });
 });
 
