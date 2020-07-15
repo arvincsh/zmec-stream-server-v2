@@ -22,4 +22,4 @@ RUN sudo npm install forever -g
 
 RUN sudo npm install 
 
-CMD [ "forever", "start", "/home/work/zMEC-stream-server-v2/server/server.js" ]
+CMD [ "forever", "start", "/home/work/zMEC-stream-server-v2/server.js" ]
