@@ -20,6 +20,7 @@ var clientb64=[];
 
 io.sockets.on('connection',function(socket){
   clientid.push(socket.id);
+  console.log(clientid);
   var camera= new cv.VideoCapture('rtsp://admin:admin@140.113.179.14:8088/channel1');
   clientcamera.push(camera);
   clientc2i.push('');
@@ -45,11 +46,21 @@ io.sockets.on('connection',function(socket){
     }
   });
 //*/
-  socket.on('disconnect', function(socket) {
+  socket.on('stop', function() {
     clientcamera.splice(clientid.indexOf(socket.id), 1);
     clientc2i.splice(clientid.indexOf(socket.id), 1);
     clientb64.splice(clientid.indexOf(socket.id), 1);
     clientid.splice(clientid.indexOf(socket.id), 1);
+    //socket.disconnect();
+    console.log(clientid);
+  });
+  socket.on('disconnect', function(socket) {
+
+    clientcamera.splice(clientid.indexOf(socket.id), 1);
+    clientc2i.splice(clientid.indexOf(socket.id), 1);
+    clientb64.splice(clientid.indexOf(socket.id), 1);
+    clientid.splice(clientid.indexOf(socket.id), 1);
+    console.log(clientid);
   });
 });
 
