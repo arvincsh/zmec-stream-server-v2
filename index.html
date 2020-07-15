@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Z-Com Stream</title>
+  <style>
+    body {
+      background: black;
+      color:#CCCCCC;
+    }
+    div {
+      padding-top: 50px;
+      text-align: center;
+    }
+    #canvas {
+      width: 640px;
+      height: 480px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <canvas id="canvas" width="640" height="480"></canvas>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io.connect();
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var img = new Image();
+    socket.on('frame', function (data) {
+      img.onload = function () {
+        context.drawImage(this, 0, 0, canvas.width, canvas.height);
+      };
+      img.src = 'data:image/png;base64,' + data.buffer;
+    //*
+      setTimeout(function(){
+        socket.emit('req');
+      },100);
+    //*/
+    });
+  </script>
+</body>
+</html>

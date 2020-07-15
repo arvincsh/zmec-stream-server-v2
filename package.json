@@ -1,0 +1,19 @@
+{
+  "name": "zmec-stream-server-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "forever": "^3.0.0",
+    "http": "0.0.1-security",
+    "opencv": "^7.0.0",
+    "process": "^0.11.10",
+    "socket.io": "^2.3.0"
+  }
+}
