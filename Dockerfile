@@ -10,9 +10,9 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 
 RUN apt-get install -y nodejs
 
-RUN git clone https://github.com/arvincsh/zMEC-stream-server-v2.git
+RUN git clone https://github.com/arvincsh/zmec-stream-server-v2.git
 
-WORKDIR /home/work/zMEC-stream-server-v2/server
+WORKDIR /home/work/zmec-stream-server-v2
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -22,4 +22,4 @@ RUN sudo npm install forever -g
 
 RUN sudo npm install 
 
-CMD [ "forever", "start", "/home/work/zMEC-stream-server-v2/server.js" ]
+CMD [ "forever", "start", "/home/work/zmec-stream-server-v2/server.js" ]
